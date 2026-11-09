@@ -30,5 +30,22 @@ the template for sharing the required settings. On a fresh checkout, run:
 cp .env.example .env
 ```
 
-Creating this file does not create the database or automatically load the
-settings into Python; your connection script will need to load them.
+The importer loads these settings automatically. The PostgreSQL database
+must already exist.
+
+## Import the mortgage data
+
+The original CSV belongs at `data/raw/mortgage_default_data.csv`. Both `data/`
+and CSV files are excluded from Git.
+
+```sh
+source .venv/bin/activate
+pip install -r requirements.txt
+python postgres-connect.py
+```
+
+This creates `public.mortgage_default` and imports the CSV in one transaction.
+It validates the data first, maps blanks and `Not avail.` to SQL `NULL`, parses
+observation timestamps, and preserves the unnamed CSV index as `source_row_id`.
+It refuses to overwrite an existing table. All source rows are preserved;
+missing values are not imputed.

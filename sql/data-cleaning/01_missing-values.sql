@@ -31,6 +31,14 @@ WHERE
 -- 4,003 
 
 
+-- Count how many rows have a target_var (necessary for training)
+SELECT COUNT(*) AS rows_with_target FROM public.mortgage_default
+WHERE target_var IS NOT NULL;
+-- 9,436
+-- If we were to remove all rows that have a missing feature,
+-- we would have 9436-4003 = 5433 rows 
+-- Losing almost half of our original data
+
 
 -- Check if there is an association between missing values and mortgage default rates
 SELECT
@@ -108,4 +116,3 @@ GROUP BY missing_feature_count
 
 ORDER BY missing_feature_count;
 -- # of missing features has little apparent relationship with default risk
-

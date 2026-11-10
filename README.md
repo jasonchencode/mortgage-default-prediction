@@ -1,5 +1,20 @@
 # Mortgage Credit Risk Prediction and Automated Loan Decisioning
 
+## Client Characteristics
+| Feature | Definition | Relevance to Mortgage Default |
+|---|---|---|
+| **Income** | Applicant's reported earnings (period and gross/net basis unspecified). | Indicates repayment capacity. |
+| **Loan Amount** | Total mortgage amount requested. | Affects repayment obligations. |
+| **Term Length** | Scheduled repayment duration (unit unspecified). | Affects payments and credit exposure. |
+| **Instalment/Income** | Scheduled loan payment relative to income. | Measures repayment burden and potential financial stress. |
+| **Occupation** | Applicant's employment classification. | May reflect income stability. |
+| **Marital Status** | Applicant's relationship status. | May correlate with household finances; raises fairness concerns. |
+| **SCHUFA** | Creditworthiness indicator associated with Germany's credit reporting system (dataset scale unverified). | May help predict repayment risk. |
+| **Number of Applicants** | Number of people jointly applying for a mortgage. | May reflect shared income and repayment responsibility. |
+| **Observation Date** | Date associated with the applicant record. | Useful for temporal analysis and validation. |
+| **Default Flag (`target_var`)** | Whether the borrower subsequently defaulted (1 = Yes, 0 = No). | **Prediction target**, not an input feature. |
+
+
 ## Python environment
 
 Create the local virtual environment (Python 3.14):

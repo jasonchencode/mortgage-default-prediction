@@ -42,11 +42,12 @@ and clarify units, score definitions, and category codes before interpreting it.
    and generated model artifacts out of Git.
 2. Separate the 564 records without targets from the 9,436 labelled records.
    Do not impute outcomes. Retain unlabelled records for possible later predictions.
-3. Define a chronological training/validation/test split for predicting future
-   applications. Inspect yearly sample sizes and default counts before choosing
-   cutoffs. Keep records without observation dates outside this evaluation
-   initially. Existing whole-dataset SQL exploration is preliminary; reserve the
-   test set from further feature selection and tuning.
+3. Use the frozen chronological split: 2008–2015 for training, 2016 for
+   validation, and 2017–2018 for final testing. Keep labelled records without
+   observation dates outside this evaluation initially. Further exploration uses
+   only the development portion (training plus validation); the test set remains
+   untouched until all preprocessing and modelling choices are fixed. Existing
+   whole-dataset SQL exploration is preliminary.
 4. Use Python on development data to inspect numeric histograms and box plots by
    default outcome. Compare default rates across quantile groups, showing group
    counts and confidence intervals. For applicant count, compare discrete groups.
